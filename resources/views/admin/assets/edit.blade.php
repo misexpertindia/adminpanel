@@ -25,35 +25,18 @@
                 <span class="help-block">{{ trans('cruds.asset.fields.category_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="serial_number">{{ trans('cruds.asset.fields.serial_number') }}</label>
-                <input class="form-control {{ $errors->has('serial_number') ? 'is-invalid' : '' }}" type="text" name="serial_number" id="serial_number" value="{{ old('serial_number', $asset->serial_number) }}">
-                @if($errors->has('serial_number'))
+                <label for="assigned_to_id">{{ trans('cruds.asset.fields.assigned_to') }}</label>
+                <select class="form-control select2 {{ $errors->has('assigned_to') ? 'is-invalid' : '' }}" name="assigned_to_id" id="assigned_to_id">
+                    @foreach($assigned_tos as $id => $assigned_to)
+                        <option value="{{ $id }}" {{ ($asset->assigned_to ? $asset->assigned_to->id : old('assigned_to_id')) == $id ? 'selected' : '' }}>{{ $assigned_to }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('assigned_to'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('serial_number') }}
+                        {{ $errors->first('assigned_to') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.asset.fields.serial_number_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.asset.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $asset->name) }}" required>
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.asset.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="photos">{{ trans('cruds.asset.fields.photos') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('photos') ? 'is-invalid' : '' }}" id="photos-dropzone">
-                </div>
-                @if($errors->has('photos'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('photos') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.asset.fields.photos_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.asset.fields.assigned_to_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="status_id">{{ trans('cruds.asset.fields.status') }}</label>
@@ -84,6 +67,26 @@
                 <span class="help-block">{{ trans('cruds.asset.fields.location_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="effective_from">{{ trans('cruds.asset.fields.effective_from') }}</label>
+                <input class="form-control date {{ $errors->has('effective_from') ? 'is-invalid' : '' }}" type="text" name="effective_from" id="effective_from" value="{{ old('effective_from', $asset->effective_from) }}" required>
+                @if($errors->has('effective_from'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('effective_from') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.asset.fields.effective_from_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="effective_to">{{ trans('cruds.asset.fields.effective_to') }}</label>
+                <input class="form-control date {{ $errors->has('effective_to') ? 'is-invalid' : '' }}" type="text" name="effective_to" id="effective_to" value="{{ old('effective_to', $asset->effective_to) }}">
+                @if($errors->has('effective_to'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('effective_to') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.asset.fields.effective_to_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="notes">{{ trans('cruds.asset.fields.notes') }}</label>
                 <textarea class="form-control {{ $errors->has('notes') ? 'is-invalid' : '' }}" name="notes" id="notes">{{ old('notes', $asset->notes) }}</textarea>
                 @if($errors->has('notes'))
@@ -94,18 +97,15 @@
                 <span class="help-block">{{ trans('cruds.asset.fields.notes_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="assigned_to_id">{{ trans('cruds.asset.fields.assigned_to') }}</label>
-                <select class="form-control select2 {{ $errors->has('assigned_to') ? 'is-invalid' : '' }}" name="assigned_to_id" id="assigned_to_id">
-                    @foreach($assigned_tos as $id => $assigned_to)
-                        <option value="{{ $id }}" {{ ($asset->assigned_to ? $asset->assigned_to->id : old('assigned_to_id')) == $id ? 'selected' : '' }}>{{ $assigned_to }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('assigned_to'))
+                <label for="photos">{{ trans('cruds.asset.fields.photos') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('photos') ? 'is-invalid' : '' }}" id="photos-dropzone">
+                </div>
+                @if($errors->has('photos'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('assigned_to') }}
+                        {{ $errors->first('photos') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.asset.fields.assigned_to_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.asset.fields.photos_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

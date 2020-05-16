@@ -29,13 +29,13 @@
                             {{ trans('cruds.asset.fields.category') }}
                         </th>
                         <th>
-                            {{ trans('cruds.asset.fields.serial_number') }}
+                            {{ trans('cruds.asset.fields.modelmake') }}
                         </th>
                         <th>
                             {{ trans('cruds.asset.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.asset.fields.photos') }}
+                            {{ trans('cruds.asset.fields.assigned_to') }}
                         </th>
                         <th>
                             {{ trans('cruds.asset.fields.status') }}
@@ -47,7 +47,7 @@
                             {{ trans('cruds.asset.fields.notes') }}
                         </th>
                         <th>
-                            {{ trans('cruds.asset.fields.assigned_to') }}
+                            {{ trans('cruds.asset.fields.photos') }}
                         </th>
                         <th>
                             &nbsp;
@@ -67,17 +67,13 @@
                                 {{ $asset->category->name ?? '' }}
                             </td>
                             <td>
-                                {{ $asset->serial_number ?? '' }}
+                                {{ $asset->modelmake ?? '' }}
                             </td>
                             <td>
                                 {{ $asset->name ?? '' }}
                             </td>
                             <td>
-                                @foreach($asset->photos as $key => $media)
-                                    <a href="{{ $media->getUrl() }}" target="_blank">
-                                        {{ trans('global.view_file') }}
-                                    </a>
-                                @endforeach
+                                {{ $asset->assigned_to->name ?? '' }}
                             </td>
                             <td>
                                 {{ $asset->status->name ?? '' }}
@@ -89,7 +85,11 @@
                                 {{ $asset->notes ?? '' }}
                             </td>
                             <td>
-                                {{ $asset->assigned_to->name ?? '' }}
+                                @foreach($asset->photos as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 @can('asset_show')
@@ -162,7 +162,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 10,
   });
   $('.datatable-Asset:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){

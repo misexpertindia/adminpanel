@@ -57,6 +57,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Audit Logs
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+
+    // Assethandovers
+    Route::delete('assethandovers/destroy', 'AssethandoverController@massDestroy')->name('assethandovers.massDestroy');
+    Route::post('assethandovers/media', 'AssethandoverController@storeMedia')->name('assethandovers.storeMedia');
+    Route::post('assethandovers/ckmedia', 'AssethandoverController@storeCKEditorImages')->name('assethandovers.storeCKEditorImages');
+    Route::resource('assethandovers', 'AssethandoverController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

@@ -13,6 +13,9 @@ class CreateAssetsTable extends Migration
             $table->string('serial_number')->nullable();
             $table->string('name')->nullable();
             $table->longText('notes')->nullable();
+            $table->date('effective_from')->nullable();
+            $table->date('effective_to')->nullable();
+            $table->string('modelmake')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

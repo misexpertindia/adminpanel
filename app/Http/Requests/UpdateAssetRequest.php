@@ -19,20 +19,25 @@ class UpdateAssetRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => [
+            'category_id'    => [
                 'required',
                 'integer',
             ],
-            'name'        => [
-                'required',
-            ],
-            'status_id'   => [
+            'status_id'      => [
                 'required',
                 'integer',
             ],
-            'location_id' => [
+            'location_id'    => [
                 'required',
                 'integer',
+            ],
+            'effective_from' => [
+                'required',
+                'date_format:' . config('panel.date_format'),
+            ],
+            'effective_to'   => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
         ];
     }

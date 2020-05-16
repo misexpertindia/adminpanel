@@ -94,34 +94,6 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="created_by_id">{{ trans('cruds.user.fields.created_by') }}</label>
-                <select class="form-control select2 {{ $errors->has('created_by') ? 'is-invalid' : '' }}" name="created_by_id" id="created_by_id" required>
-                    @foreach($created_bies as $id => $created_by)
-                        <option value="{{ $id }}" {{ ($user->created_by ? $user->created_by->id : old('created_by_id')) == $id ? 'selected' : '' }}>{{ $created_by }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('created_by'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('created_by') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.created_by_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="updated_by_id">{{ trans('cruds.user.fields.updated_by') }}</label>
-                <select class="form-control select2 {{ $errors->has('updated_by') ? 'is-invalid' : '' }}" name="updated_by_id" id="updated_by_id">
-                    @foreach($updated_bies as $id => $updated_by)
-                        <option value="{{ $id }}" {{ ($user->updated_by ? $user->updated_by->id : old('updated_by_id')) == $id ? 'selected' : '' }}>{{ $updated_by }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('updated_by'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('updated_by') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.updated_by_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

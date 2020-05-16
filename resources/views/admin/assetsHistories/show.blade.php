@@ -57,6 +57,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.assetsHistory.fields.created_by') }}
+                        </th>
+                        <td>
+                            {{ $assetsHistory->created_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.assetsHistory.fields.updated_by') }}
+                        </th>
+                        <td>
+                            {{ $assetsHistory->updated_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.assetsHistory.fields.created_at') }}
                         </th>
                         <td>

@@ -30,6 +30,9 @@
                             {{ trans('cruds.assetsHistory.fields.assigned_user') }}
                         </th>
                         <th>
+                            {{ trans('cruds.assetsHistory.fields.created_by') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.assetsHistory.fields.created_at') }}
                         </th>
                         <th>
@@ -59,6 +62,9 @@
                                 {{ $assetsHistory->assigned_user->name ?? '' }}
                             </td>
                             <td>
+                                {{ $assetsHistory->created_by->name ?? '' }}
+                            </td>
+                            <td>
                                 {{ $assetsHistory->created_at ?? '' }}
                             </td>
                             <td>
@@ -86,7 +92,7 @@
   
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 10,
   });
   $('.datatable-AssetsHistory:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
