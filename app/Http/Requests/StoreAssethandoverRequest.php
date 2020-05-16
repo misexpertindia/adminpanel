@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Asset;
+use App\Assethandover;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreAssetRequest extends FormRequest
+class StoreAssethandoverRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('asset_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('assethandover_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -19,27 +19,30 @@ class StoreAssetRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id'    => [
+            'empid_id'           => [
                 'required',
                 'integer',
             ],
-            'name'           => [
-                'min:5',
-                'max:100',
-            ],
-            'status_id'      => [
-                'required',
+            'assets.*'           => [
                 'integer',
             ],
-            'location_id'    => [
-                'required',
-                'integer',
+            'assets'             => [
+                'array',
             ],
-            'effective_from' => [
+            'exitemailrec'       => [
                 'required',
+            ],
+            'allassets'          => [
+                'required',
+            ],
+            'addeactivationdate' => [
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
-            'effective_to'   => [
+            'approvals.*'        => [
+                'required',
+            ],
+            'itapprovaldate'     => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],

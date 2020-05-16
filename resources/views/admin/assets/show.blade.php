@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.asset.fields.modelmake') }}
+                        </th>
+                        <td>
+                            {{ $asset->modelmake }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.asset.fields.name') }}
                         </th>
                         <td>
@@ -49,14 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.asset.fields.photos') }}
+                            {{ trans('cruds.asset.fields.assigned_to') }}
                         </th>
                         <td>
-                            @foreach($asset->photos as $key => $media)
-                                <a href="{{ $media->getUrl() }}" target="_blank">
-                                    {{ trans('global.view_file') }}
-                                </a>
-                            @endforeach
+                            {{ $asset->assigned_to->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -77,6 +81,38 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.asset.fields.effective_from') }}
+                        </th>
+                        <td>
+                            {{ $asset->effective_from }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.effective_to') }}
+                        </th>
+                        <td>
+                            {{ $asset->effective_to }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.created_by') }}
+                        </th>
+                        <td>
+                            {{ $asset->created_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.updated_by') }}
+                        </th>
+                        <td>
+                            {{ $asset->updated_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.asset.fields.notes') }}
                         </th>
                         <td>
@@ -85,10 +121,30 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.asset.fields.assigned_to') }}
+                            {{ trans('cruds.asset.fields.photos') }}
                         </th>
                         <td>
-                            {{ $asset->assigned_to->name ?? '' }}
+                            @foreach($asset->photos as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.created_at') }}
+                        </th>
+                        <td>
+                            {{ $asset->created_at }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.updated_at') }}
+                        </th>
+                        <td>
+                            {{ $asset->updated_at }}
                         </td>
                     </tr>
                 </tbody>

@@ -29,11 +29,7 @@ class UsersController extends Controller
 
         $roles = Role::all()->pluck('title', 'id');
 
-        $created_bies = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $updated_bies = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.users.create', compact('roles', 'created_bies', 'updated_bies'));
+        return view('admin.users.create', compact('roles'));
     }
 
     public function store(StoreUserRequest $request)
@@ -50,13 +46,9 @@ class UsersController extends Controller
 
         $roles = Role::all()->pluck('title', 'id');
 
-        $created_bies = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $updated_bies = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $user->load('roles', 'created_by', 'updated_by');
 
-        return view('admin.users.edit', compact('roles', 'created_bies', 'updated_bies', 'user'));
+        return view('admin.users.edit', compact('roles', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -71,7 +63,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'created_by', 'updated_by');
+        $user->load('roles', 'created_by', 'updated_by', 'empidAssethandovers');
 
         return view('admin.users.show', compact('user'));
     }

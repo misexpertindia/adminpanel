@@ -92,6 +92,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#empid_assethandovers" role="tab" data-toggle="tab">
+                {{ trans('cruds.assethandover.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="empid_assethandovers">
+            @includeIf('admin.users.relationships.empidAssethandovers', ['assethandovers' => $user->empidAssethandovers])
+        </div>
+    </div>
+</div>
 
 @endsection

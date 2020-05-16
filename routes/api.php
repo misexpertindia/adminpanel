@@ -31,4 +31,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Modules
     Route::apiResource('modules', 'ModulesApiController');
+
+    // Assethandovers
+    Route::post('assethandovers/media', 'AssethandoverApiController@storeMedia')->name('assethandovers.storeMedia');
+    Route::apiResource('assethandovers', 'AssethandoverApiController');
 });

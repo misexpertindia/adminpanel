@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->roles()->where('id', 1)->exists();
     }
 
+    public function empidAssethandovers()
+    {
+        return $this->hasMany(Assethandover::class, 'empid_id', 'id');
+    }
+
     public function setPasswordAttribute($input)
     {
         if ($input) {

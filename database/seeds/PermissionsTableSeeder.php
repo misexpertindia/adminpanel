@@ -214,6 +214,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '52',
+                'title' => 'assethandover_create',
+            ],
+            [
+                'id'    => '53',
+                'title' => 'assethandover_edit',
+            ],
+            [
+                'id'    => '54',
+                'title' => 'assethandover_show',
+            ],
+            [
+                'id'    => '55',
+                'title' => 'assethandover_delete',
+            ],
+            [
+                'id'    => '56',
+                'title' => 'assethandover_access',
+            ],
+            [
+                'id'    => '57',
                 'title' => 'profile_password_edit',
             ],
         ];

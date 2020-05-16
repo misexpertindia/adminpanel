@@ -19,6 +19,8 @@ class AssetsHistory extends Model
         'status_id',
         'location_id',
         'assigned_user_id',
+        'created_by_id',
+        'updated_by_id',
         'created_at',
         'updated_at',
     ];
@@ -46,5 +48,15 @@ class AssetsHistory extends Model
     public function assigned_user()
     {
         return $this->belongsTo(User::class, 'assigned_user_id');
+    }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    public function updated_by()
+    {
+        return $this->belongsTo(User::class, 'updated_by_id');
     }
 }

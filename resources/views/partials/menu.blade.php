@@ -121,13 +121,23 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('assethandover_access')
+                            <li class="nav-item">
+                                <a href="{{ route("admin.assethandovers.index") }}" class="nav-link {{ request()->is('admin/assethandovers') || request()->is('admin/assethandovers/*') ? 'active' : '' }}">
+                                    <i class="fa-fw far fa-hand-lizard nav-icon">
+
+                                    </i>
+                                    {{ trans('cruds.assethandover.title') }}
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcan
             @can('project_access')
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link  nav-dropdown-toggle" href="#">
-                        <i class="fa-fw fas fa-cogs nav-icon">
+                        <i class="fa-fw fas fa-briefcase nav-icon">
 
                         </i>
                         {{ trans('cruds.project.title') }}
@@ -136,7 +146,7 @@
                         @can('manage_project_access')
                             <li class="nav-item">
                                 <a href="{{ route("admin.manage-projects.index") }}" class="nav-link {{ request()->is('admin/manage-projects') || request()->is('admin/manage-projects/*') ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-cogs nav-icon">
+                                    <i class="fa-fw fas fa-briefcase nav-icon">
 
                                     </i>
                                     {{ trans('cruds.manageProject.title') }}
@@ -146,7 +156,7 @@
                         @can('module_access')
                             <li class="nav-item">
                                 <a href="{{ route("admin.modules.index") }}" class="nav-link {{ request()->is('admin/modules') || request()->is('admin/modules/*') ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-cogs nav-icon">
+                                    <i class="fa-fw fas fa-align-left nav-icon">
 
                                     </i>
                                     {{ trans('cruds.module.title') }}
